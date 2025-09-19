@@ -1,2 +1,2 @@
-# atmospheric-science
-EESCGU4008
+# EESCGU4008: Atmospheric Sscience
+
