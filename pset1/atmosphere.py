@@ -47,29 +47,6 @@ class Atmosphere:
         return Atmosphere.p0 * np.exp(-Atmosphere.g * z / (Atmosphere.R_d * T_iso))
 
 
-if __name__ == "__main__":
-    # compute profiles
-    z, T, p = Atmosphere.integrate_pressure(z_top_m=70000, dz=100.0)
-    T_mean = T.mean()  # mean over 0–70 km for the comparison
-    p_iso = Atmosphere.isothermal_pressure(z, T_mean)
-
-    km = z / 1000.0
-    plt.figure()
-    plt.plot(T, km)
-    plt.xlabel("Temperature (K)")
-    plt.ylabel("Height (km)")
-    plt.title("Piecewise-Linear Temperature Profile (0–70 km)")
-    plt.grid(True, alpha=0.3)
-
-    plt.figure()
-    plt.semilogy(p/100.0, km, label="US76 piecewise T(z)")
-    plt.semilogy(p_iso/100.0, km, "--", label=f"Isothermal (T̄={T_mean:.1f} K)")
-    plt.xlabel("Pressure (hPa)")
-    plt.ylabel("Height (km)")
-    plt.title("Pressure Profile on Log Scale")
-    plt.legend()
-    plt.grid(True, which="both", alpha=0.3)
-    plt.show()
 
 
         
